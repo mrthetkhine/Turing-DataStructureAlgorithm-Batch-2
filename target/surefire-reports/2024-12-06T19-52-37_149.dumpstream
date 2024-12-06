@@ -1,0 +1,12 @@
+# Created at 2024-12-06T19:52:37.150
+Dec 06, 2024 7:52:37 PM org.junit.jupiter.engine.discovery.MethodSelectorResolver resolve
+
+# Created at 2024-12-06T19:52:37.150
+WARNING: Possible configuration error: method [public void com.turing.dsa.search.LinearTestSearch.testSearchWithParamerizedTest(int,int)] resulted in multiple TestDescriptors [org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor, org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor]. This is typically the result of annotating a method with multiple competing annotations such as @Test, @RepeatedTest, @ParameterizedTest, @TestFactory, etc.
+
+# Created at 2024-12-06T19:52:37.189
+Dec 06, 2024 7:52:37 PM org.junit.jupiter.engine.discovery.MethodSelectorResolver resolve
+
+# Created at 2024-12-06T19:52:37.190
+WARNING: Possible configuration error: method [public void com.turing.dsa.search.LinearTestSearch.testSearchWithParamerizedTest(int,int)] resulted in multiple TestDescriptors [org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor, org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor]. This is typically the result of annotating a method with multiple competing annotations such as @Test, @RepeatedTest, @ParameterizedTest, @TestFactory, etc.
+

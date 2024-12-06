@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="com.turing.dsa.tdd.CapitalTest" time="0.033" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="com.turing.dsa.tdd.CapitalTest" time="0.011" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="17.0.11+0"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk@17/17.0.11/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/Project/Turing/DSA/DSA-Batch-2/DSA-Batch-2"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/Project/Turing/DSA/DSA-Batch-2"/>
     <property name="java.vm.vendor" value="Homebrew"/>
     <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -12,9 +12,8 @@
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
     <property name="user.country" value="MM"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="test" value="com.turing.dsa.tdd.CapitalTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/Project/Turing/DSA/DSA-Batch-2/DSA-Batch-2"/>
+    <property name="user.dir" value="/Users/Project/Turing/DSA/DSA-Batch-2"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="java.runtime.version" value="17.0.11+0"/>
     <property name="os.arch" value="x86_64"/>
@@ -43,7 +42,7 @@
     <property name="java.class.path" value="/Applications/NetBeans/Apache NetBeans 14.app/Contents/Resources/NetBeans/netbeans/java/maven/boot/plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="17"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=com.turing.dsa.tdd.CapitalTest -Dmaven.ext.class.path=/Applications/NetBeans/Apache NetBeans 14.app/Contents/Resources/NetBeans/netbeans/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/Applications/NetBeans/Apache NetBeans 14.app/Contents/Resources/NetBeans/netbeans/java/maven-nblib/netbeans-eventspy.jar test"/>
     <property name="java.home" value="/usr/local/Cellar/openjdk@17/17.0.11/libexec/openjdk.jdk/Contents/Home"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -61,8 +60,8 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase classname="com.turing.dsa.tdd.CapitalTest" name="com.turing.dsa.tdd.CapitalTest.testSingleWord" time="0.033"/>
-  <testcase classname="com.turing.dsa.tdd.CapitalTest" name="com.turing.dsa.tdd.CapitalTest.testMulipleWord" time="0"/>
   <testcase classname="com.turing.dsa.tdd.CapitalTest" name="com.turing.dsa.tdd.CapitalTest.testEmpty" time="0"/>
   <testcase classname="com.turing.dsa.tdd.CapitalTest" name="com.turing.dsa.tdd.CapitalTest.testNull" time="0"/>
+  <testcase classname="com.turing.dsa.tdd.CapitalTest" name="com.turing.dsa.tdd.CapitalTest.testSingleWord" time="0.01"/>
+  <testcase classname="com.turing.dsa.tdd.CapitalTest" name="com.turing.dsa.tdd.CapitalTest.testMulipleWord" time="0.001"/>
 </testsuite>
