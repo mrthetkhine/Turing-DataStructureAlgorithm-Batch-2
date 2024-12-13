@@ -13,7 +13,9 @@ public class SortingTest {
 	Util util = new Util();
 	//SortingAlgorithm sortingAlgo = new BubbleSort();
 	
-	SortingAlgorithm sortingAlgo = new SelectionSort();
+	//SortingAlgorithm sortingAlgo = new SelectionSort();
+	
+	SortingAlgorithm sortingAlgo = new InsertionSort();
 	@Test
 	public void testEmptyElement()
 	{
