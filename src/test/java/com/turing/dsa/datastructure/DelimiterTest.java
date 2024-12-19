@@ -2,41 +2,31 @@ package com.turing.dsa.datastructure;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class DelimiterTest {
 	Delimiter delimiter = new Delimiter();
 	
-	@Test
-	public void testEmpty()
-	{
-		boolean valid = delimiter.isValid("");
-		assertTrue(valid);
-	}
+
+    @ParameterizedTest
+    @CsvSource(value = {
+    					"'',true", 
+    					"c[d],true", 
+    					"a{bd}e,true", 
+    					"c[d,false", 
+    					"a[b{c}d]e},false", 
+    					"a{b(c),false", 
+    					
+                        })
+    public void testDelimiter(String input, boolean expected) {
+        System.out.println("Input "+input+ " Expected "+expected);
+        
+        boolean result = delimiter.isValid(input);
+        assertEquals(expected,result);
+    }
 	
-	@Test
-	public void testBracket()
-	{
-	
-		boolean valid = delimiter.isValid("c[d]");
-		assertTrue(valid);
-		
-		
-	}
-	@Test
-	public void testBracketNegative()
-	{
-		assertFalse(delimiter.isValid("c[d"));
-	}
-	@Test
-	public void testMultipleDelitmier()
-	{
-		assertTrue(delimiter.isValid("a{bd}e"));
-	}
-	@Test
-	public void testMultipleDelitmierNeg()
-	{
-		assertFalse(delimiter.isValid("a{bde"));
-	}
 }
