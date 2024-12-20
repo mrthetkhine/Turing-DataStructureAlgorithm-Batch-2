@@ -85,24 +85,18 @@ public class PostfixConverter {
 					}
 					else 
 					{
-						while(!stack.isEmpty() )
+						while(!stack.isEmpty() && stack.peek()!='('&& this.isHigherOrEqual(stack.peek(), ch))
 						{
-							if(stack.peek() == '(')
-							{
-								stack.push(ch);
-								break outer;
-							}
-							else if (this.isHigherOrEqual(stack.peek(), ch))
-							{
-								postfix += stack.pop();
-							}
-							else
-							{
-								stack.push(ch);
-							}
-							
+							postfix += stack.pop();
 						}
-						stack.push(ch);
+						if(!stack.isEmpty() && stack.peek() =='(')
+						{
+							stack.push(ch);
+						}
+						else//top of stack is (
+						{
+							stack.push(ch);
+						}
 					}
 					
 				}

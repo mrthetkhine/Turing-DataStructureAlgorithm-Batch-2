@@ -8,7 +8,7 @@ public class PostfixConverterTest {
 
 	PostfixConverter converter = new PostfixConverter();
 	
-	/*
+	
 	@Test
 	public void testBaseCase()
 	{
@@ -30,17 +30,17 @@ public class PostfixConverterTest {
 		String postfix = converter.toPostfix("a*b+c");
 		assertEquals("ab*c+",postfix);	
 	}
-	*/
+	
 	@Test
 	public void testWithDifferentPrecedenceOperator2()
 	{
 		String postfix = converter.toPostfix("a+b*c");
 		assertEquals("abc*+",postfix);	
-		//assertEquals("ab*cd*+",converter.toPostfix("a*b+c*d"));
-		//assertEquals("ab/cd*+",converter.toPostfix("a/b+c*d"));
+		assertEquals("ab*cd*+",converter.toPostfix("a*b+c*d"));
+		assertEquals("ab/cd*+",converter.toPostfix("a/b+c*d"));
 	}
 	
-	//@Test
+	@Test
 	public void testWithParenthesis()
 	{
 		String postfix = converter.toPostfix("(a+b)*c");
