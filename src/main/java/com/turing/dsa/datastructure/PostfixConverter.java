@@ -78,27 +78,25 @@ public class PostfixConverter {
 			else if(this.isOperator(ch))
 			{
 				//pop all operator on stack which is greater than or equal to current one
-				outer:{
-					if(stack.isEmpty())
+				
+				if(stack.isEmpty())
+				{
+					stack.push(ch);
+				}
+				else 
+				{
+					while(!stack.isEmpty() && stack.peek()!='('&& this.isHigherOrEqual(stack.peek(), ch))
+					{
+						postfix += stack.pop();
+					}
+					if(!stack.isEmpty() && stack.peek() =='(')
 					{
 						stack.push(ch);
 					}
-					else 
+					else//top of stack is (
 					{
-						while(!stack.isEmpty() && stack.peek()!='('&& this.isHigherOrEqual(stack.peek(), ch))
-						{
-							postfix += stack.pop();
-						}
-						if(!stack.isEmpty() && stack.peek() =='(')
-						{
-							stack.push(ch);
-						}
-						else//top of stack is (
-						{
-							stack.push(ch);
-						}
+						stack.push(ch);
 					}
-					
 				}
 				
 			}
