@@ -15,4 +15,8 @@ public class Node {
 	{
 		return this.value;
 	}
+	public Node getNext()
+	{
+		return this.next;
+	}
 }

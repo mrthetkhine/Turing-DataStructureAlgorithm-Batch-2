@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 
 public class StackTest {
 	
-	 Stack stack = new Stack(10);
+	  //Stack stack = new Stack(10);
+	  StackByLinkedList stack = new StackByLinkedList();
 	  @Test
 	  public void testPush()
 	  {
@@ -18,6 +19,7 @@ public class StackTest {
 		  int element = stack.peek();
 		  assertEquals(100, element);
 	  }
+	  
 	  
 	  @Test
 	  public void testPushElement2()
@@ -40,6 +42,7 @@ public class StackTest {
 		  int element = stack.peek();
 		  assertEquals(300, element);
 	  }
+	  
 	  @Test
 	  public void testPop()
 	  {
@@ -51,6 +54,7 @@ public class StackTest {
 		  assertEquals(100, element);
 		  assertEquals(size-1, stack.size());
 	  }
+	  
 	  @Test
 	  public void testPopTwo()
 	  {
@@ -67,5 +71,17 @@ public class StackTest {
 		  
 		  assertEquals(size-2, stack.size());
 	  }
-	  
+	  @Test 
+	  public void testPushPopdManyItem()
+	  {
+		  for(int i=0;i<10;i++)
+		  {
+			  stack.push(i);
+		  }
+		  for(int i=9;i>=0;i--)
+		  {
+			  int item = stack.pop();
+			  assertEquals(i,item);
+		  }
+	  }
 }

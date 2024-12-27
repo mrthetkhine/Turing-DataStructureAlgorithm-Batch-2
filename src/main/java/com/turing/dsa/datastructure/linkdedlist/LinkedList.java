@@ -3,24 +3,33 @@ package com.turing.dsa.datastructure.linkdedlist;
 import java.util.Iterator;
 
 public class LinkedList implements Iterable{
-	Node first;
-	Node last;
+	protected Node first;
+	protected Node last;
 	
-	LinkedList()
+	protected LinkedList()
 	{
 		
 	}
-	LinkedList(Node firstNode)
+	protected LinkedList(Node firstNode)
 	{
 		this.first = firstNode;
 		this.last = firstNode;
 	}
-	void addFirst(int value)
+	protected Node getFirst()
+	{
+		return this.first;
+	}
+	protected Node getLast()
+	{
+		return this.last;
+	}
+	
+	protected void addFirst(int value)
 	{
 		Node node = new Node(value);
 		this.addFirst(node);
 	}
-	void addFirst(Node node)
+	protected void addFirst(Node node)
 	{
 		if(this.first==null)//first time 
 		{
@@ -33,12 +42,12 @@ public class LinkedList implements Iterable{
 			this.first = node;
 		}
 	}
-	void addLast(int value)
+	protected void addLast(int value)
 	{
 		Node node = new Node(value);
 		this.addLast(node);
 	}
-	void addLast(Node node)
+	protected void addLast(Node node)
 	{
 		if(this.last ==null && this.first==null)//first time
 		{
@@ -119,29 +128,37 @@ public class LinkedList implements Iterable{
 	}
 	public Node deleteItem(int item) {
 		System.out.println("First value "+this.first.value);
-		Node nodeToDelete = this.find(item);
-		if(nodeToDelete !=null)//positive case.
+		
+		
+		Node previous = null;
+		Node current = first;
+		Node nodeToDelete =null;
+		while( current !=null)
 		{
-			System.out.println("Node value "+nodeToDelete.value + " first node value "+this.first.value);
-			System.out.println("Node found to delete nodeToDelete "+nodeToDelete + " first "+this.first);
-			if(this.first == nodeToDelete)//first item
+			if(current.value== item)
 			{
-				System.out.println("Delete First Node is first node");
-				if(first== last)//single item
-				{
-					System.out.println("only single item");
-					this.first = null;
-					this.last= null;
-					return nodeToDelete;
-				}
-				else //many item
+				//Found node to be deleted
+				nodeToDelete = current;
+				if(first== current)//it is first node
 				{
 					this.first = nodeToDelete.next;
-					System.out.println("Delete First many item");
+					return nodeToDelete;
+				}
+				else if(previous != null)//middle node && last node
+				{
+					
+					previous.next= nodeToDelete.next;
+					
+					if(nodeToDelete.next ==null)//last node
+					{
+						this.last = previous;
+					}
 					return nodeToDelete;
 				}
 				
 			}
+			previous = current;
+			current = current.next;
 		}
 		return null;
 	}

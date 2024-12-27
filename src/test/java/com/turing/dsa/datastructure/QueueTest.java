@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 
 public class QueueTest {
 	
-	Queue queue = new Queue();
+	//Queue queue = new Queue();
+	QueueByLinkedList queue = new QueueByLinkedList();
 	
 	@Test
 	public void testEnqueue()
@@ -18,6 +19,7 @@ public class QueueTest {
 		assertEquals(1,queue.size());
 		assertEquals(100,queue.peek());
 	}
+	
 	@Test
 	public void testEnqueueTwo()
 	{
@@ -26,10 +28,10 @@ public class QueueTest {
 		assertEquals(1,queue.size());
 		assertEquals(200,queue.peek());
 	}
+	
 	@Test
 	public void testEnqueueMultipleItem()
 	{
-		Queue queue = new Queue();
 		
 		queue.enqueue(200);
 		queue.enqueue(300);
@@ -37,6 +39,7 @@ public class QueueTest {
 		assertEquals(2,queue.size());
 		assertEquals(200,queue.peek());
 	}
+	
 	@Test
 	public void testSize()
 	{
@@ -48,16 +51,17 @@ public class QueueTest {
 		assertEquals(3,queue.size());
 		assertEquals(200,queue.peek());
 	}
+	
 	@Test
 	public void testDeuque()
 	{
-		Queue queue = new Queue();
 	
 		queue.enqueue(200);
 		
 		int item = queue.dequeue();
 		assertEquals(200,item);	
 	}
+	
 	@Test
 	public void testDeuqueTwo()
 	{
@@ -67,6 +71,7 @@ public class QueueTest {
 		int item = queue.dequeue();
 		assertEquals(300,item);	
 	}
+	
 	@Test
 	public void testQueueBoundary()
 	{
@@ -82,6 +87,7 @@ public class QueueTest {
 			assertEquals(i,item);
 		}
 	}
+	/*
 	@Test
 	public void testTailLessThanHead()
 	{
@@ -97,7 +103,7 @@ public class QueueTest {
 		assertEquals("Queue is empty",excep.getMessage());
 		assertEquals(300,item);	
 	}
-	
+	/*
 	@Test
 	public void testNormaldQueueLimitation()
 	{
@@ -118,5 +124,5 @@ public class QueueTest {
 		assertEquals("Queue is full",excep.getMessage());
 		
 	}
-	
+	*/
 }
