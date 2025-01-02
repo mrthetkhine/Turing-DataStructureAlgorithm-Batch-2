@@ -53,18 +53,21 @@ public class MergeSort {
 			}
 			int []arr2 = new int [input.length- middle];
 			
+			//System.out.println("Arr1 size "+arr1.length + " Arr2 size "+arr2.length);
 			//copy arr2 
 			for(int j=0;j< arr2.length;j++)
 			{
 				arr2[j]= input[k++];
 			}
-			
+			arr1 = this.sort(arr1);
+			arr2 = this.sort(arr2);
 			//merge
 			int result[] = this.merge(arr1, arr2);
 			return result;
 		}
 		else //single item
 		{
+			//System.out.println("Input "+input.length);
 			return new int[]{input[0]};
 		}
 		
