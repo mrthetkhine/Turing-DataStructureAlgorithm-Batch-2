@@ -12,7 +12,8 @@ public class MergeSortTest {
 	Util util = new Util();
 
 	MergeSort algo = new MergeSort();
-	//@Test
+	
+	@Test
 	public void testMerge()
 	{
 		MergeSort algo = new MergeSort();
@@ -23,7 +24,7 @@ public class MergeSortTest {
 		assertEquals(4, result.length);
 		assertTrue(util.isArraySorted(result));
 	}
-	//@Test
+	@Test
 	public void testMergeEqual()
 	{
 		MergeSort algo = new MergeSort();
@@ -33,7 +34,7 @@ public class MergeSortTest {
 		int result[] = algo.merge(arr1,arr2); //[1,1,2,4,5]
 		assertTrue(util.isArraySorted(result));
 	}
-	//@Test
+	@Test
 	public void testMergeUnEqualSize()
 	{
 		MergeSort algo = new MergeSort();
@@ -43,7 +44,7 @@ public class MergeSortTest {
 		int result[] = algo.merge(arr1,arr2);
 		assertTrue(util.isArraySorted(result));
 	}
-	//@Test
+	@Test
 	public void testMergeUnEqualSizeTwo()
 	{
 		MergeSort algo = new MergeSort();
@@ -71,7 +72,7 @@ public class MergeSortTest {
 	@Test
 	public void tesSortRandomData()
 	{
-		int[] arr = util.createRandomArray(5);
+		int[] arr = util.createRandomArray(21);
 		System.out.println("Input "+util.arrayToString(arr));
 		int result [] = algo.sort(arr);
 		System.out.println("Sorted "+util.arrayToString(result));
