@@ -15,7 +15,7 @@ public class SortingTest {
 	
 	//SortingAlgorithm sortingAlgo = new SelectionSort();
 	
-	SortingAlgorithm sortingAlgo = new InsertionSort();
+	SortingAlgorithm sortingAlgo = new ShellSort();
 	@Test
 	public void testEmptyElement()
 	{
@@ -46,19 +46,22 @@ public class SortingTest {
 		
 	}
 	@Test
-	public void testBubbleSort()
+	public void testSort()
 	{
-		int[]arr = {3,2,1};
+		int[]arr = {9,8,3,7,5,6,4,1};
+		System.out.println("Input "+util.arrayToString(arr));
 		
 		sortingAlgo.sort(arr);
+		
+		System.out.println("Sorted "+util.arrayToString(arr));
 		assertTrue(util.isArraySorted(arr));
 		
 	}
 	
 	@Test
-	public void testBubbleSortRandomData()
+	public void testSortRandomData()
 	{
-		int[] arr = util.createRandomArray(20);
+		int[] arr = util.createRandomArray(5);
 		System.out.println("Input "+util.arrayToString(arr));
 		sortingAlgo.sort(arr);
 		System.out.println("Sorted "+util.arrayToString(arr));
