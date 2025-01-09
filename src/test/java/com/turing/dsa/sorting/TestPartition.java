@@ -18,11 +18,13 @@ public class TestPartition {
 		
 		int pivotIndex = algo.findPivot(arr);
 		
-		assertPviotIsCorrect(arr, pivotIndex);
 		System.out.println("Pivot "+arr[pivotIndex]);
 		System.out.println("Partitoned "+util.arrayToString(arr));
+		
+		assertPviotIsCorrect(arr, pivotIndex);
+		
 	}
-	//@Test
+	@Test
 	public void testPartitionBoundaryCase()
 	{
 		int[]arr = {9,8,3,7,5,6,4,1};
@@ -30,9 +32,10 @@ public class TestPartition {
 		
 		int pivotIndex = algo.findPivot(arr);
 		
-		assertPviotIsCorrect(arr, pivotIndex);
 		System.out.println("Pivot "+arr[pivotIndex]);
 		System.out.println("Partitoned "+util.arrayToString(arr));
+		assertPviotIsCorrect(arr, pivotIndex);
+	
 	}
 
 	private void assertPviotIsCorrect(int[] arr, int pivotIndex) {

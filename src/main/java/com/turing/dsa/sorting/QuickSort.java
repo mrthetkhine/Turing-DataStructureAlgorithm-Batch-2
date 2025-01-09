@@ -5,7 +5,7 @@ public class QuickSort {
 	public int findPivot(int[] arr) {
 		int tempPivotIndex = 0;
 		
-		int left = tempPivotIndex+1;
+		int left = tempPivotIndex;
 		int right = arr.length-1;
 		
 		int pivot = arr[tempPivotIndex];
@@ -26,15 +26,20 @@ public class QuickSort {
 			arr[right] = temp;
 		}
 		//left == right
-		if(pivot> arr[left])
+		System.out.println("Pivot "+pivot);
+		System.out.println("Left "+arr[left]);
+		
+		
+		if(arr[left] < pivot)
 		{
 			int temp = arr[left];
 			arr[left] = arr[tempPivotIndex];
 			arr[tempPivotIndex] = temp;
-			
+			System.out.println("Return pivot "+pivot);
 			return left;
 		}
 		return tempPivotIndex;
+		
 	}
 
 }
