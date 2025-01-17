@@ -8,12 +8,15 @@ public class BinaryTreeTest {
 	
 	BinaryTree getBinaryTree()
 	{
-		Node root= new Node(7);
-		Node left =new Node(6);
-		Node right = new Node(8);
+		Node root= new Node(17);
+		Node left =new Node(15);
+		Node right = new Node(30);
 		
 		root.setLeftChild(left);
 		root.setRightChild(right);
+		
+		left.setLeftChild(new Node(13));
+		left.setRightChild(new Node(16));
 		
 		BinaryTree tree = new BinaryTree(root);
 		return tree;
@@ -23,9 +26,9 @@ public class BinaryTreeTest {
 	public void testTreeCreation()
 	{
 		BinaryTree tree = getBinaryTree();
-		assertEquals(7,tree.root.getValue());
-		assertEquals(6,tree.root.getLeftChild().getValue());
-		assertEquals(8,tree.root.getRightChild().getValue());
+		assertEquals(17,tree.root.getValue());
+		assertEquals(15,tree.root.getLeftChild().getValue());
+		assertEquals(30,tree.root.getRightChild().getValue());
 	}
 	
 	@Test 
@@ -33,32 +36,40 @@ public class BinaryTreeTest {
 	{
 		BinaryTree tree = getBinaryTree();
 		
-		Node resultNode = tree.search(7);
-		assertEquals(7,resultNode.getValue());
+		Node resultNode = tree.search(17);
+		assertEquals(17,resultNode.getValue());
 	}
 	@Test 
 	public void testSearchRightNode()
 	{
 		BinaryTree tree = getBinaryTree();
 		
-		Node resultNode = tree.search(8);
-		assertEquals(8,resultNode.getValue());
+		Node resultNode = tree.search(15);
+		assertEquals(15,resultNode.getValue());
 	}
 	@Test 
 	public void testSearchLeftNode()
 	{
 		BinaryTree tree = getBinaryTree();
 		
-		Node resultNode = tree.search(6);
-		assertEquals(6,resultNode.getValue());
+		Node resultNode = tree.search(30);
+		assertEquals(30,resultNode.getValue());
 	}
+	
 	@Test 
 	public void testSearchNonExistingNode()
 	{
 		BinaryTree tree = getBinaryTree();
 		
-		Node resultNode = tree.search(16);
+		Node resultNode = tree.search(11);
 		assertEquals(null,resultNode);
 	}
-	
+	@Test 
+	public void testSearchMultipleDepth()
+	{
+		BinaryTree tree = getBinaryTree();
+		
+		Node resultNode = tree.search(16);
+		assertEquals(16,resultNode.getValue());
+	}
 }
