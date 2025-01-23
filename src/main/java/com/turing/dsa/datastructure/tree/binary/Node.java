@@ -43,5 +43,8 @@ public class Node {
 		this.parent = parent;
 	}
 	
-	
+	public boolean isSubTree()
+	{
+		return this.leftChild != null   || this.rightChild!=null;
+	}
 }
