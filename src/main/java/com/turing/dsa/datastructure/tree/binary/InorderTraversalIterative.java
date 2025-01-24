@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Stack;
 
-public class InorderTraversalImperative implements BinaryTreeTraversal {
+public class InorderTraversalIterative implements BinaryTreeTraversal {
 	BinaryTree tree;
 	
 	ArrayList<Node> list;
-	public InorderTraversalImperative(BinaryTree tree)
+	public InorderTraversalIterative(BinaryTree tree)
 	{
 		this.tree = tree;
 		
