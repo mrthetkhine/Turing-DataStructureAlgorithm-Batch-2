@@ -24,76 +24,30 @@ public class PostOrderTraversalIterative implements BinaryTreeTraversal {
 	}
 	void traversePostorder(Node node)
 	{
-		Stack<Node> stack =new Stack<>();
-		ArrayList<Node> visited = new ArrayList<Node>();
+		Stack<Node> recursiveStack =new Stack<>();
+		Stack<Node> reverseResultStack =new Stack<>();
+		
 		Node current= node;
-		while( current != null)
+		recursiveStack.push(current);
+		
+		while( !recursiveStack.empty())
 		{
-			while( current.leftChild != null)
-			{
-				System.out.println("push "+current.value);
-				stack.push(current);
-				current =current.leftChild;
-			}
-			if( current.rightChild !=null)
-			{
-				System.out.println("Right child case");
-			}
-			System.out.println("Node "+current.value);
-			list.add(current);
+			Node item = recursiveStack.pop();
+			reverseResultStack.push(item);
 			
-			
-			if(! stack.empty())//left deadend or right deadend
+			if(item.leftChild !=null)
 			{
-				Node backtrackNode = stack.pop();
-				
-				if(!visited.contains(backtrackNode))
-				{
-					System.out.println("Not visited, push "+backtrackNode.value);
-					stack.push(backtrackNode);
-					visited.add(backtrackNode);
-				}
-				else //process root
-				{
-					list.add(backtrackNode);
-					System.out.println("Backtrack node");
-					System.out.println("Node "+backtrackNode.value);
-					if(! stack.empty())
-					{
-						current = stack.pop();
-						continue;
-					}
-					else
-					{
-						break;
-					}
-					
-				}
-				
-				
-				if( backtrackNode.rightChild != null  )
-				{
-					
-					System.out.println("Go to right child of "+backtrackNode.value);
-					
-					current = backtrackNode.rightChild;
-					visited.add(backtrackNode.rightChild);
-				}
-				else //no right child process root
-				{
-					System.out.println("This case "+backtrackNode.value);
-					//current = backtrackNode;
-					System.out.println("Node "+backtrackNode.value);
-					list.add(backtrackNode);
-					break;
-				}
+				recursiveStack.push(item.leftChild);
 			}
-			else
+			if(item.rightChild !=null)
 			{
-				break;
+				recursiveStack.push(item.rightChild);
 			}
 		}
-		
+		while(!reverseResultStack.empty())
+		{
+			list.add(reverseResultStack.pop());
+		}
 	}
 	 class TreeIterator implements Iterator<Node>
 	 {

@@ -47,4 +47,12 @@ public class Node {
 	{
 		return this.leftChild != null   || this.rightChild!=null;
 	}
+	public boolean isLeaf()
+	{
+		return this.leftChild == null  && this.rightChild ==null;
+	}
+	public boolean haveOnlyOneChild()
+	{
+		return (this.leftChild==null && this.rightChild!=null) || (this.leftChild!=null && this.rightChild==null);
+	}
 }

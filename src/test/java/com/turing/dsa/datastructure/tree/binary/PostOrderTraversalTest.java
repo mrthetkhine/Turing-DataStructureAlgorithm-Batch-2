@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class PostOrderTraversalTest {
 	
-	//@Test
+	@Test
 	public void testBaseCase()
 	{
 		BinaryTree tree;
@@ -30,7 +30,7 @@ public class PostOrderTraversalTest {
 		assertEquals(17,iterator.next().value);
 		assertEquals(false,iterator.hasNext());
 	}
-	//@Test
+	@Test
 	public void testBaseCaseTwo()
 	{
 		BinaryTree tree;

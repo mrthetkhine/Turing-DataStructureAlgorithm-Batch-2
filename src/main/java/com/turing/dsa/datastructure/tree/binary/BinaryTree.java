@@ -87,7 +87,82 @@ public class BinaryTree{
 		}
 		return insertedNode;
 	}
-	
+	public Node getMinNode()
+	{
+		Node current = this.root;
+		while(current.leftChild !=null)
+		{
+			current = current.leftChild;
+		}
+		return current;
+	}
+	public Node getMaxNode()
+	{
+		Node current = this.root;
+		while(current.rightChild !=null)
+		{
+			current = current.rightChild;
+		}
+		return current;
+	}
 
+	public Node getSuccessorOf(int item) {
+		Node node =this.search(item);
+		
+		if(node.rightChild ==null)//Problem
+		{
+			return null;
+		}
+		else
+		{
+			//successor is next max, leftmost child of right subtree
+			Node current = node.rightChild;
+			while(current.leftChild !=null)
+			{
+				current = current.leftChild;
+			}
+			return current;
+		}
+	
+	}
+
+	public Node deleteNode(int item) {
+		Node nodeToDelete = this.search(item);
+		
+		if(nodeToDelete.isLeaf())
+		{
+			Node parentNode = nodeToDelete.getParent();
+			if(parentNode.leftChild == nodeToDelete)//left child
+			{
+				parentNode.leftChild = null;
+			}
+			else if(parentNode.rightChild == nodeToDelete)
+			{
+				parentNode.rightChild = null;
+			}
+		}
+		else if(nodeToDelete.haveOnlyOneChild())
+		{
+			if(nodeToDelete.getParent() == null)//Root
+			{
+				if(nodeToDelete.leftChild !=null)
+				{
+					this.root = nodeToDelete.getLeftChild();
+				}
+				if(nodeToDelete.getRightChild() != null)
+				{
+					this.root = nodeToDelete.getRightChild();
+				}
+			}
+			else
+			{
+				//TODO Delete for non root
+				
+			}
+			
+			
+		}
+		return nodeToDelete;
+	}
 	
 }
