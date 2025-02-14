@@ -3,15 +3,16 @@ package com.turing.dsa.two3fourtree;
 public class TwoThreeFourTree {
 	Node root;
 
-	public void insert(int item) {
+	public Node insert(int item) {
 		if(root == null)
 		{
 			root = this.createTwoNode(null, item);
+			return root;
 		}
 		else
 		{
 			Node node = this.root;
-			node.insert(item);
+			return node.insert(item);
 		}
 	}
 	public Node createTwoNode(Node parent,int value)
