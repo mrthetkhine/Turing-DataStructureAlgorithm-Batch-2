@@ -1,6 +1,7 @@
 package com.turing.dsa.twothreefour;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -169,5 +170,83 @@ public class SearchTwoThreeFourTest {
 		
 		searchNode = parent.search(205);
 		assertEquals(child3,searchNode);
+	}
+	@Test
+	public void testDepth3()
+	{
+		/*
+		 * 	            [205]
+			    [150]        	[215,300]->level1
+			[120] [200]    [210] [250] [310,350] ->level2
+		 * */
+		Node parent = new Node();
+		parent.insert(205);
+		
+		Node level1Child0 = new Node();
+		level1Child0.insert(150);
+		level1Child0.parent = parent;
+		
+		Node level1Child1 = new Node();
+		level1Child1.insert(215);
+		level1Child1.insert(300);
+		level1Child1.parent = parent;
+		
+		parent.children.add(level1Child0);
+		parent.children.add(level1Child1);
+		
+		Node level2Child0 = new Node();
+		level2Child0.insert(120);
+		level2Child0.parent = level1Child0;
+		
+		Node level2Child1= new Node();
+		level2Child1.insert(200);
+		level2Child1.parent = level1Child0;
+		
+		level1Child0.children.add(level2Child0);
+		level1Child0.children.add(level2Child1);
+		
+		
+		//========
+		Node rightLevel1Child0 = level1Child1;
+		
+		Node rightLevel2Child0 = new Node();
+		rightLevel2Child0.insert(210);
+		rightLevel2Child0.parent = rightLevel1Child0;
+		
+		Node rightLevel2Child1 = new Node();
+		rightLevel2Child1.insert(250);
+		rightLevel2Child1.parent =rightLevel1Child0;
+		
+		Node rightLevel2Child2 = new Node();
+		rightLevel2Child2.insert(310);
+		rightLevel2Child2.insert(350);
+		rightLevel2Child2.parent =rightLevel1Child0;
+
+		rightLevel1Child0.children.add(rightLevel2Child0);
+		rightLevel1Child0.children.add(rightLevel2Child1);
+		rightLevel1Child0.children.add(rightLevel2Child2);
+		
+		Node searchNode = parent.search(350);
+		//System.out.println("SearchNode "+searchNode);
+		assertEquals(rightLevel2Child2,searchNode);
+		
+		searchNode = parent.search(310);
+		assertEquals(rightLevel2Child2,searchNode);
+		
+		searchNode = parent.search(120);
+		assertEquals(level2Child0,searchNode);
+		
+		searchNode = parent.search(210);
+		assertEquals(rightLevel2Child0,searchNode);
+		
+		searchNode = parent.searchForInsert(351);
+		System.out.println("SearchNode for insert--> "+searchNode);
+		assertEquals(rightLevel2Child2,searchNode);
+		assertTrue(searchNode.isLeaf());
+		
+		searchNode = parent.searchForInsert(214);
+		System.out.println("SearchNode for insert--> "+searchNode);
+		assertEquals(rightLevel2Child0,searchNode);
+		assertTrue(searchNode.isLeaf());
 	}
 }

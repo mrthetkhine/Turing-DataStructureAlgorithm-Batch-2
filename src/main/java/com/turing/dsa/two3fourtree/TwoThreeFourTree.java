@@ -4,6 +4,8 @@ public class TwoThreeFourTree {
 	Node root;
 
 	public Node insert(int item) {
+	
+		System.out.println("To insert item "+item);
 		if(root == null)
 		{
 			root = this.createTwoNode(null, item);
@@ -11,8 +13,28 @@ public class TwoThreeFourTree {
 		}
 		else
 		{
-			Node node = this.root;
-			return node.insert(item);
+			Node node = this.root.searchForInsert(item);
+			System.out.println("Node search for interest ==> "+node);
+			if(node.noOfNode != 4)
+			{
+				return node.insert(item);
+			}
+			else //We need to split
+			{
+				System.out.println("Need to split ==> "+node);
+				Node splitParent = node.splitNode(node);
+				
+				if(node.parent == null )//Node is root
+				{
+					this.root = splitParent;
+				}
+				System.out.println("Split parent "+splitParent);
+				node = this.root.searchForInsert(item);
+				System.out.println("After split ==> "+node);
+				return node.insert(item);
+				
+			}
+			
 		}
 	}
 	public Node createTwoNode(Node parent,int value)

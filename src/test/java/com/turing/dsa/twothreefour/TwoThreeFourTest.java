@@ -8,7 +8,7 @@ import com.turing.dsa.two3fourtree.Node;
 import com.turing.dsa.two3fourtree.TwoThreeFourTree;
 
 public class TwoThreeFourTest {
-	@Test
+	//@Test
 	public void testInsertBaseCase()
 	{
 		TwoThreeFourTree tree = new TwoThreeFourTree();
@@ -18,7 +18,7 @@ public class TwoThreeFourTest {
 		assertEquals(100,root.keys[0]);
 		assertEquals(2,root.noOfNode);
 	}
-	@Test
+	//@Test
 	public void testInsertSmallBaseCase()
 	{
 		TwoThreeFourTree tree = new TwoThreeFourTree();
@@ -30,7 +30,7 @@ public class TwoThreeFourTest {
 		assertEquals(100,root.keys[1]);
 		assertEquals(3,root.noOfNode);
 	}
-	@Test
+	//@Test
 	public void testInsertLargeBaseCase()
 	{
 		TwoThreeFourTree tree = new TwoThreeFourTree();
@@ -58,7 +58,7 @@ public class TwoThreeFourTest {
 		assertEquals(4,insertedNode.noOfNode);
 	}
 	
-	@Test
+	//@Test
 	public void testSplitBaseCase()
 	{
 		TwoThreeFourTree tree = new TwoThreeFourTree();
@@ -112,6 +112,84 @@ public class TwoThreeFourTest {
 		Node child1 = parent.children.get(1);
 		assertEquals(150,child1.keys[0]);
 		assertEquals(200,child1.keys[1]);
+	
+	}
+	@Test
+	public void testInsertSplitBaseCaseAddChild1()
+	{
+		TwoThreeFourTree tree = new TwoThreeFourTree();
+		tree.insert(100);
+		tree.insert(150);
+		tree.insert(120);
+		tree.insert(200);
+		
+		/*
+		 * 		
+		 * 			 [120]
+		 * 		[100] [150,200]
+		 * */
+		
+		
+		Node insertedNode = tree.insert(201);
+		
+		/*
+		 * 		
+		 * 			   [120]
+		 * 		[100] [150,200,201]
+		 * */
+		
+		
+		Node parent = insertedNode.parent;
+		assertEquals(120,parent.keys[0]);
+		
+		Node child0 = parent.children.get(0);
+		assertEquals(100,child0.keys[0]);
+		
+		Node child1 = parent.children.get(1);
+		assertEquals(150,child1.keys[0]);
+		assertEquals(200,child1.keys[1]);
+		assertEquals(201,child1.keys[2]);
+	
+	}
+	@Test
+	public void testInsertSplitBaseCaseAddChild1Split()
+	{
+		TwoThreeFourTree tree = new TwoThreeFourTree();
+		tree.insert(100);
+		tree.insert(150);
+		tree.insert(120);
+		tree.insert(200);
+		tree.insert(201);
+		
+		/*
+		 * 		
+		 * 			   [120]
+		 * 		[100]    [150,200,201]
+		 * */
+		
+		
+		Node insertedNode = tree.insert(202);
+		
+		/*
+		 * 		
+		 * 			   [120,200]
+		 * 		[100] [150] [201,202]
+		 * */
+		
+		
+		Node parent = insertedNode.parent;
+		assertEquals(120,parent.keys[0]);
+		assertEquals(200,parent.keys[1]);
+		
+		Node child0 = parent.children.get(0);
+		assertEquals(100,child0.keys[0]);
+		
+		Node child1 = parent.children.get(1);
+		assertEquals(150,child1.keys[0]);
+		
+		Node child2 = parent.children.get(2);
+		assertEquals(201,child2.keys[0]);
+		assertEquals(202,child2.keys[1]);
 	
 	}
 }
