@@ -326,7 +326,7 @@ public class TwoThreeFourTest {
 		Node child1 = root.children.get(1);
 		assertEquals(203,child1.keys[0]);
 		
-		Node searchNode = tree.search(205);
+		Node searchNode = tree.searchForInsert(206);
 		System.out.println("Search Node "+searchNode);
 		
 		System.out.println("Children of child 0 "+child0.children.size());

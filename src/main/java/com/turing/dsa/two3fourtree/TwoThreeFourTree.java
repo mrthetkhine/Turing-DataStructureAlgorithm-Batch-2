@@ -17,7 +17,9 @@ public class TwoThreeFourTree {
 			System.out.println("Node search for interest ==> "+node);
 			if(node.noOfNode != 4)
 			{
-				return node.insert(item,this);
+				Node temp = node.insert(item,this);
+				System.out.println("After inserted "+temp);
+				return temp;
 			}
 			else //We need to split
 			{
@@ -31,7 +33,9 @@ public class TwoThreeFourTree {
 				System.out.println("Split parent "+splitParent);
 				node = this.root.searchForInsert(item,this);
 				System.out.println("After split ==> "+node);
-				return node.insert(item,this);
+				Node temp = node.insert(item,this);
+				System.out.println("After inserted "+temp);
+				return temp;
 				
 			}
 			
@@ -40,6 +44,10 @@ public class TwoThreeFourTree {
 	public Node search(int value)
 	{
 		return this.root.search(value);
+	}
+	public Node searchForInsert(int value)
+	{
+		return this.root.searchForInsert(value, this);
 	}
 	public Node createTwoNode(Node parent,int value)
 	{

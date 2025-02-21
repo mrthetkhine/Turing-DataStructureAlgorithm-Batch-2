@@ -127,7 +127,7 @@ public class Node {
 		//Parent can also be four node
 		parent.insert(node.keys[1],tree);
 		
-		int childIndex = this.getChildIndex(node);
+		int childIndex = this.insertedIndex(parent,node.keys[1]);
 		Node child0 = new Node();
 		child0.parent = parent;
 		
@@ -184,8 +184,12 @@ public class Node {
 			//go to children
 			//System.out.println("Index "+index);
 			Node node = current.children.get(index);
+			
+			
 			if(node != null)
 			{
+				System.out.println("Goes down to from "+current);
+				System.out.println("Goes down to child "+node);
 				return node.searchForInsert(value,tree);
 			}
 			else
@@ -200,6 +204,17 @@ public class Node {
 		
 	}
 	
+	int insertedIndex(Node node,int value)
+	{
+		for(int i=0; i< node.keys.length;i++)
+		{
+			if(node.keys[i]==value)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
 	int getChildIndex(Node node)
 	{
 		int childSize = node.parent.children.size();
