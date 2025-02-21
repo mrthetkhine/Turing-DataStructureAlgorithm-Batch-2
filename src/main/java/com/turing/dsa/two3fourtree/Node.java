@@ -10,7 +10,7 @@ public class Node {
 	public int noOfNode = 1;//2,3 or 4
 	
 	
-	public Node insert(int value)
+	public Node insert(int value,TwoThreeFourTree tree)
 	{
 		if(noOfNode != 4)//Normal insert
 		{
@@ -19,7 +19,7 @@ public class Node {
 		else
 		{
 			//split case
-			Node splitParent =this.splitNode(this);
+			Node splitParent =this.splitNode(this,tree);
 			//We need to find leave node to insert
 			return splitParent;
 		}
@@ -43,79 +43,8 @@ public class Node {
 		this.noOfNode++;
 		return this;
 	}
-	Node splitNode(Node node)
-	{
-		//simple case no parent case
-		if(node.parent ==null)
-		{
-			System.out.println("splitNode parent null case");
-			return splitWhenNoParent(node);
-		}
-		else
-		{
-			System.out.println("This is our case==");
-			this.splitWithParent(node);
-		}
-		return node;
-	}
-	public Node splitWhenNoParent(Node node) {
-		Node parent =new Node();
-		parent.insert(node.keys[1]);
-		
-		//split into child
-		Node child0 = new Node();
-		child0.parent = parent;
-		
-		child0.insert( node.keys[0]);
-		
-		Node child1 = new Node();
-		child1.parent = parent;
-		child1.insert( node.keys[2]);
-		
-		parent.children.add(child0);
-		parent.children.add(child1);
-		
-		
-		return parent;
-	}
-	int getChildIndex(Node node)
-	{
-		int childSize = node.parent.children.size();
-		for(int i=0;i<childSize;i++)
-		{
-			Node child = node.parent.children.get(i);
-			if(child==node)
-			{
-				return i;
-			}
-		}
-		return -1;
-	}
-	public Node splitWithParent(Node node)
-	{
-		Node parent = node.parent;
-		//Parent can also be four node
-		parent.insert(node.keys[1]);
-		
-		int childIndex = this.getChildIndex(node);
-		Node child0 = new Node();
-		child0.parent = parent;
-		
-		child0.insert( node.keys[0]);
-		
-		Node child1 = new Node();
-		child1.parent = parent;
-		child1.insert( node.keys[2]);
-		
-		//Remove first
-		parent.children.remove(childIndex);
-		
-		parent.children.add(childIndex,child1);
-		parent.children.add(childIndex,child0);
-		
-		
-		return parent;
-	}
+	
+	
 	public Node search(int value)
 	{
 		//System.out.println("SearchNode ==> "+this);
@@ -154,10 +83,88 @@ public class Node {
 		}
 		
 	}
-	public Node searchForInsert(int value)
+	
+	Node splitNode(Node node,TwoThreeFourTree tree)
+	{
+		//simple case no parent case
+		if(node.parent ==null)
+		{
+			System.out.println("splitNode parent null case");
+			Node parent = splitWhenNoParent(node,tree);
+			tree.root = parent;
+			return parent;
+		}
+		else
+		{
+			System.out.println("This is our case==");
+			return this.splitWithParent(node,tree);
+		}
+	
+	}
+	public Node splitWhenNoParent(Node node,TwoThreeFourTree tree) {
+		Node parent =new Node();
+		parent.insert(node.keys[1],tree);
+		
+		//split into child
+		Node child0 = new Node();
+		child0.parent = parent;
+		
+		child0.insert( node.keys[0],tree);
+		
+		Node child1 = new Node();
+		child1.parent = parent;
+		child1.insert( node.keys[2],tree);
+		
+		parent.children.add(child0);
+		parent.children.add(child1);
+		
+		
+		return parent;
+	}
+	public Node splitWithParent(Node node,TwoThreeFourTree tree)
+	{
+		Node parent = node.parent;
+		//Parent can also be four node
+		parent.insert(node.keys[1],tree);
+		
+		int childIndex = this.getChildIndex(node);
+		Node child0 = new Node();
+		child0.parent = parent;
+		
+		child0.insert( node.keys[0],tree);
+		
+		Node child1 = new Node();
+		child1.parent = parent;
+		child1.insert( node.keys[2],tree);
+		
+		//Remove first
+		parent.children.remove(childIndex);
+		
+		parent.children.add(childIndex,child1);
+		parent.children.add(childIndex,child0);
+		
+		
+		return parent;
+		
+	}
+	public Node searchForInsert(int value,TwoThreeFourTree tree)
 	{
 		//System.out.println("searchForInsert ==> "+this);
 		Node current = this;
+		if(current.noOfNode == 4)//Split
+		{
+			System.out.println(">>Current node need to split "+current);
+			Node parent = this.splitNode(current,tree);
+			System.out.println(">>split after parent "+parent);
+			return parent.searchForInsert(value,tree);
+		}
+		/*
+		 * TODO we need to fix logic eg
+		 *      		[120,200]-
+    			[100]   [150] [201,203] 
+		 * 	
+		 * in above case, we should return search node for 204 as [201,203] not [120,200]
+		 * */
 		int index = 0;
 		while( index< current.keys.length && current.keys[index]!=null )
 		{
@@ -179,7 +186,7 @@ public class Node {
 			Node node = current.children.get(index);
 			if(node != null)
 			{
-				return node.searchForInsert(value);
+				return node.searchForInsert(value,tree);
 			}
 			else
 			{
@@ -191,6 +198,20 @@ public class Node {
 			return current;
 		}
 		
+	}
+	
+	int getChildIndex(Node node)
+	{
+		int childSize = node.parent.children.size();
+		for(int i=0;i<childSize;i++)
+		{
+			Node child = node.parent.children.get(i);
+			if(child==node)
+			{
+				return i;
+			}
+		}
+		return -1;
 	}
 	@Override
 	public String toString()
