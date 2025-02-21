@@ -213,7 +213,7 @@ public class TwoThreeFourTest {
 		assertEquals(201,child3.keys[0]);
 		assertEquals(202,child3.keys[1]);
 	}
-	//@Test
+	@Test
 	public void testInsertSplitDown()
 	{
 		TwoThreeFourTree tree = new TwoThreeFourTree();
@@ -249,7 +249,7 @@ public class TwoThreeFourTest {
 		
 	
 	}
-	//@Test
+	@Test
 	public void testInsertSplitDownDepthUp2()
 	{
 		TwoThreeFourTree tree = new TwoThreeFourTree();
