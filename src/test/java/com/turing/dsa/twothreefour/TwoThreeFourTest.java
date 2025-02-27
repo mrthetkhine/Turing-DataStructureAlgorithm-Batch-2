@@ -304,7 +304,7 @@ public class TwoThreeFourTest {
 		
 		/*
 		 * 				[120,200]
-		 			[101] [150][201,203,204]
+		 			[100] [150][201,203,204]
 		 * 		
 		 * */
 		
@@ -314,7 +314,7 @@ public class TwoThreeFourTest {
 		 * 			
                                 [200]
                         	[120]    [203]
-		 			[101] [150]    [201] [204,205]
+		 			[100] [150]    [201] [204,205]
 		 * 		
 		 * */
 		Node root = tree.getRoot();
@@ -329,20 +329,22 @@ public class TwoThreeFourTest {
 		Node searchNode = tree.searchForInsert(206);
 		System.out.println("Search Node "+searchNode);
 		
-		System.out.println("Children of child 0 "+child0.children.size());
-		System.out.println("Children of child 1 "+child1.children.size());
-		/*
+		System.out.println("Children of child 0 "+child0 +" child size" +child0.children.size());
+		System.out.println("Children of child 1 "+child1 +" child size "+ child1.children.size());
+		
+		
 		Node level1Child0 = child0.children.get(0);
 		assertEquals(100,level1Child0.keys[0]);
 		
-		/*
-		Node child1 = parent.children.get(1);
-		assertEquals(150,child1.keys[0]);
+		Node level1Child1 = child0.children.get(1);
+		assertEquals(150,level1Child1.keys[0]);
 		
-		Node child2 = parent.children.get(2);
-		assertEquals(201,child2.keys[0]);
-		assertEquals(203,child2.keys[1]);
+		Node level1Child10 = child1.children.get(0);
+		assertEquals(201,level1Child10.keys[0]);
 		
-		*/
+		Node level1Child11 = child1.children.get(1);
+		assertEquals(204,level1Child11.keys[0]);
+		assertEquals(205,level1Child11.keys[1]);
+		
 	}
 }

@@ -23,7 +23,7 @@ public class TwoThreeFourTree {
 			}
 			else //We need to split
 			{
-				System.out.println("Need to split ==> "+node);
+				System.out.println("Need to split $$$==> "+node);
 				Node splitParent = node.splitNode(node,this);
 				
 				if(node.parent == null )//Node is root
@@ -62,5 +62,6 @@ public class TwoThreeFourTree {
 		return this.root;
 	}
 	
-	
+	//Deletion algorithm
+	//https://azrael.digipen.edu/~mmead/www/Courses/CS280/Trees-2-3-4-delete.html
 }

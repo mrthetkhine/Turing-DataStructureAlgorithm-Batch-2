@@ -102,6 +102,7 @@ public class Node {
 	
 	}
 	public Node splitWhenNoParent(Node node,TwoThreeFourTree tree) {
+		System.out.println("splitWhenNoParent "+node );
 		Node parent =new Node();
 		parent.insert(node.keys[1],tree);
 		
@@ -110,19 +111,31 @@ public class Node {
 		child0.parent = parent;
 		
 		child0.insert( node.keys[0],tree);
+		if(node.noOfNode ==4 && !node.isLeaf() )
+		{
+			child0.children.add(node.children.get(0));
+			child0.children.add(node.children.get(1));
+		}
 		
 		Node child1 = new Node();
 		child1.parent = parent;
 		child1.insert( node.keys[2],tree);
 		
+		if(node.noOfNode ==4 && !node.isLeaf())
+		{
+			child1.children.add(node.children.get(2));
+			child1.children.add(node.children.get(3));
+		}
+		
 		parent.children.add(child0);
 		parent.children.add(child1);
-		
+	
 		
 		return parent;
 	}
 	public Node splitWithParent(Node node,TwoThreeFourTree tree)
 	{
+		System.out.println("splitWithParent "+node);
 		Node parent = node.parent;
 		//Parent can also be four node
 		parent.insert(node.keys[1],tree);
@@ -133,10 +146,20 @@ public class Node {
 		
 		child0.insert( node.keys[0],tree);
 		
+		if(node.noOfNode ==4 && !node.isLeaf())
+		{
+			child0.children.add(node.children.get(0));
+			child0.children.add(node.children.get(1));
+		}
 		Node child1 = new Node();
 		child1.parent = parent;
 		child1.insert( node.keys[2],tree);
 		
+		if(node.noOfNode ==4 && !node.isLeaf())
+		{
+			child1.children.add(node.children.get(2));
+			child1.children.add(node.children.get(3));
+		}
 		//Remove first
 		parent.children.remove(childIndex);
 		
