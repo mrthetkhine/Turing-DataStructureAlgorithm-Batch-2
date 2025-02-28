@@ -16,8 +16,15 @@ public class HashTableTest {
 		assertEquals(2,hash);
 		
 		
+		hash = HashTable.hash("elloh",10);
+	    assertEquals(2,hash);
+			
 		ht.insert("hello");
 		assertEquals(true, ht.contains("hello"));
 		
+		ht.insert("elloh");
+		assertEquals(true, ht.contains("elloh"));
+		
+		System.out.println("Hello".hashCode());
 	}
 }

@@ -4,21 +4,26 @@ import java.util.LinkedList;
 
 public class HashTable {
 
-	String[] data = new String[10];
+	LinkedList[] data = new LinkedList[10];
 	
 	public HashTable()
 	{
-		
+		for(int i=0;i<data.length;i++)
+		{
+			data[i] = new LinkedList();
+		}
 	}
 	public void insert(String word)
 	{
 		int index = HashTable.hash(word,10);
-		data[index ]= word;
+		LinkedList list = data[index];
+		list.add(word);
 	}
 	public boolean contains(String word)
 	{
 		int index = HashTable.hash(word,10);
-		return data[index] != null;
+		LinkedList list = data[index];
+		return list.contains(word);
 	}
 	public static int hash(String word,int bucketSize)
 	{
