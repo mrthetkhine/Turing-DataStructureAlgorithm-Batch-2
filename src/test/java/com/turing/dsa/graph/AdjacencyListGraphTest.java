@@ -21,7 +21,7 @@ public class AdjacencyListGraphTest {
 	@Test
 	public void testGraphEdgeExist()
 	{
-		GraphAList graph = new GraphAList();
+		Graph graph = new GraphAList();
 		graph.addVertice("A");
 		graph.addVertice("B");
 		graph.addVertice("C");
@@ -38,12 +38,12 @@ public class AdjacencyListGraphTest {
 		graph.addEdge("C","F");
 		
 		assertTrue(graph.existEdge("A","B"));
-		//assertTrue(graph.existEdge("B","A"));
+		assertTrue(graph.existEdge("B","A"));
 	}
-	
+	@Test
 	public void testDFSAdjacenceyNodes()
 	{
-		GraphAList graph = new GraphAList();
+		Graph graph = new GraphAList();
 		graph.addVertice("A");
 		graph.addVertice("B");
 		graph.addVertice("C");
@@ -84,7 +84,7 @@ public class AdjacencyListGraphTest {
 	 *  C-F
 	 *  D-E
 	 * */
-	/*
+	
 	@Test
 	public void testDFS()
 	{
@@ -96,7 +96,7 @@ public class AdjacencyListGraphTest {
 		graph.addVertice("E");
 		graph.addVertice("F");
 		
-		graph.buildMatrix();
+		graph.build();
 		
 		graph.addEdge("A","B");
 		graph.addEdge("A","C");
@@ -108,7 +108,7 @@ public class AdjacencyListGraphTest {
 		/*
 		 * A,B,D,E,C,F
 		 * */
-	/*
+	
 		List<String> dfsVertices = graph.depthFirstSearch();
 		Iterator<String> iterator  = dfsVertices.iterator();
 		assertEquals("A",iterator.next());
@@ -119,5 +119,48 @@ public class AdjacencyListGraphTest {
 		assertEquals("F",iterator.next());
 		
 	}
-*/
+	/*
+	 * 	A-B 
+	 * 	A-C
+	 *  B-D
+	 *  B-E
+	 *  C-F
+	 *  D-E
+	 * */
+	
+	@Test
+	public void testBFS()
+	{
+		//Graph graph = new GraphAList();
+		Graph graph = new GraphAMatrix();
+		graph.addVertice("A");
+		graph.addVertice("B");
+		graph.addVertice("C");
+		graph.addVertice("D");
+		graph.addVertice("E");
+		graph.addVertice("F");
+		
+		graph.build();
+		
+		graph.addEdge("A","B");
+		graph.addEdge("A","C");
+		graph.addEdge("B","D");
+		graph.addEdge("B","E");
+		graph.addEdge("C","F");
+		graph.addEdge("D","E");//add cycle
+		
+		/*
+		 * A,B,C,D,E,F
+		 * */
+	
+		List<String> dfsVertices = graph.breathFirstSearch();
+		Iterator<String> iterator  = dfsVertices.iterator();
+		assertEquals("A",iterator.next());
+		assertEquals("B",iterator.next());
+		assertEquals("C",iterator.next());
+		assertEquals("D",iterator.next());
+		assertEquals("E",iterator.next());
+		assertEquals("F",iterator.next());
+		
+	}
 }

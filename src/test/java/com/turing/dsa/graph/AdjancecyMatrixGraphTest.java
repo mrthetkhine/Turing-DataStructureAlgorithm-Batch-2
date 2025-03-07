@@ -22,7 +22,7 @@ public class AdjancecyMatrixGraphTest {
 	@Test
 	public void testGraphEdgeExist()
 	{
-		GraphAMatrix graph = new GraphAMatrix();
+		Graph graph = new GraphAMatrix();
 		graph.addVertice("A");
 		graph.addVertice("B");
 		graph.addVertice("C");
@@ -30,7 +30,7 @@ public class AdjancecyMatrixGraphTest {
 		graph.addVertice("E");
 		graph.addVertice("F");
 		
-		graph.buildMatrix();
+		graph.build();
 		
 		graph.addEdge("A","B");
 		graph.addEdge("A","C");
@@ -44,7 +44,7 @@ public class AdjancecyMatrixGraphTest {
 	@Test
 	public void testDFSAdjacenceyNodes()
 	{
-		GraphAMatrix graph = new GraphAMatrix();
+		Graph graph = new GraphAMatrix();
 		graph.addVertice("A");
 		graph.addVertice("B");
 		graph.addVertice("C");
@@ -52,7 +52,7 @@ public class AdjancecyMatrixGraphTest {
 		graph.addVertice("E");
 		graph.addVertice("F");
 		
-		graph.buildMatrix();
+		graph.build();
 		
 		graph.addEdge("A","B");
 		graph.addEdge("A","C");
@@ -88,7 +88,7 @@ public class AdjancecyMatrixGraphTest {
 	@Test
 	public void testDFS()
 	{
-		GraphAMatrix graph = new GraphAMatrix();
+		Graph graph = new GraphAMatrix();
 		graph.addVertice("A");
 		graph.addVertice("B");
 		graph.addVertice("C");
@@ -96,7 +96,7 @@ public class AdjancecyMatrixGraphTest {
 		graph.addVertice("E");
 		graph.addVertice("F");
 		
-		graph.buildMatrix();
+		graph.build();
 		
 		graph.addEdge("A","B");
 		graph.addEdge("A","C");
