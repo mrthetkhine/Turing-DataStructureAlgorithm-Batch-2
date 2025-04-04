@@ -130,4 +130,17 @@ public class DijkstraTest {
 		assertTrue(neighbour.contains("C"));
 		assertTrue(neighbour.contains("D"));
 	}
+	
+	@Test
+	public void testDijkstra()
+	{
+		String[] previous = graph.dijkstraAlgorithm();
+		assertEquals(null,previous[0]);
+		assertEquals("A",previous[1]);
+		assertEquals("D",previous[2]);
+		assertEquals("A",previous[3]);
+		assertEquals("D",previous[4]);
+		assertEquals("E",previous[5]);
+		assertEquals("E",previous[6]);
+	}
 }

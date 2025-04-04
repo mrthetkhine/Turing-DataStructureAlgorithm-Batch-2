@@ -84,17 +84,19 @@ public class GraphAMatrix extends Graph{
 		
 		do
 		{
+			//System.out.println("Previous getTotalDistance "+previous);
 			distance += this.weights[verticeIndex];
 			previous =  this.previous[verticeIndex];
 			if(previous !=null)
 			{
-				verticeIndex =this.vertices.indexOf(previous);
+				verticeIndex = this.vertices.indexOf(previous);
 			}
 		}while(previous != null);
 		return distance;	
 	}
 	VerticeDistance getVerticeWithSmallestDistanceFromUnvisited(ArrayList<String> unvisited)
 	{
+		//System.out.println("Loop getVerticeWithSmallestDistanceFromUnvisited ");
 		ArrayList<VerticeDistance> verticeAndDistances = new ArrayList<>();
 		
 		for(String unvisitedVertice: unvisited)
@@ -102,6 +104,7 @@ public class GraphAMatrix extends Graph{
 			double totalDistance = this.getTotalDistance(unvisitedVertice);
 			VerticeDistance verticeDistance = new VerticeDistance(unvisitedVertice,totalDistance);
 			verticeAndDistances.add(verticeDistance);
+			//System.out.println("Loop unvisited "+unvisitedVertice);
 		}
 		Collections.sort(verticeAndDistances);
 		return verticeAndDistances.get(0);
@@ -142,7 +145,7 @@ public class GraphAMatrix extends Graph{
 	public String[] dijkstraAlgorithm()
 	{
 		this.initDijkstra();
-		
+		//System.out.println("Weight >> 1 "+this.weights[1]);
 		ArrayList<String> unvisited = new ArrayList<>();
 		for(String vertice: this.vertices)
 		{
@@ -151,7 +154,7 @@ public class GraphAMatrix extends Graph{
 		while(unvisited.size()>0)
 		{
 			VerticeDistance vd = this.getVerticeWithSmallestDistanceFromUnvisited(unvisited);
-			System.out.println("Smallest vertice "+vd.vertice +" with distance "+vd.totalDistance);
+			//System.out.println("Smallest vertice >> "+vd.vertice +" with distance "+vd.totalDistance);
 			unvisited.remove(vd.vertice);
 			
 			List<String> neighbour = this.getUnvisitedNeighbourOfVertice(vd.vertice, unvisited);
@@ -162,10 +165,13 @@ public class GraphAMatrix extends Graph{
 				int neighourIndex = this.vertices.indexOf(neighbourVertice);
 				double alt = this.weights[index] + this.matrix[index][neighourIndex];
 				
-				if(alt < this.weights[index])
+				//System.out.println("Neighour "+neighbourVertice+" Weight "+this.weights[index]+ " matrix "+this.matrix[index][neighourIndex]);
+				//System.out.println("Alt "+alt + " org weight "+this.weights[index]);
+				if(alt < this.weights[neighourIndex])
 				{
-					this.weights[index] = alt;
-					this.previous[index] = neighbourVertice;
+					this.weights[neighourIndex] = alt;
+					this.previous[neighourIndex] = vd.vertice;
+					//System.out.println("Update "+neighbourVertice +" wieght "+alt);
 				}
 				
 			}
